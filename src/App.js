@@ -10,6 +10,8 @@ class App extends Component {
            monsters: [],
            searchField: ""
       };
+
+      // this.handleChange = this.handleChange.bind(this)
   }
 
   //lifecycle methods
@@ -20,6 +22,11 @@ class App extends Component {
       .then(response => response.json())
       .then(users => this.setState({monsters:users}))
   }
+  //leverage es6 arreow functions. it allows to set the context of this to the app component
+  handleChange = (e) => {
+    this.setState({searchField: e.target.value})
+  }
+
   render() {
       const { monsters, searchField } = this.state;
       //const monsters = this.state.monsters
@@ -28,6 +35,7 @@ class App extends Component {
       
       return (
           <div className="App">
+              <h1>MONSTER ROLODEX</h1>
               {/* <CardListComponent monsters={this.state.monsters}>
                 {
                     this.state.monsters.map(monster => <h1 key={monster.id}> {monster.name} </h1>)
@@ -44,7 +52,7 @@ class App extends Component {
               /> */}
               <SearchBoxComponent
                 placeholder="search monsters"
-                handleChange={e => this.setState({ searchField: e.target.value })}
+                handleChange={this.handleChange}
               />
               <CardListComponent monsters={filteredMonsters} />
 
