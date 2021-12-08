@@ -1,3 +1,8 @@
+# About this project
+
+This project showcases my learning process through the react architecture
+This project represents my clear understanding of react architecture 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
