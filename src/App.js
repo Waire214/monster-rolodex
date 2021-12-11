@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
+import Async from './Async';
 import CardListComponent from './components/cardlist/CardListComponent';
 import SearchBoxComponent from './components/searchbox/SearchBoxComponent';
 class App extends Component {
@@ -22,6 +23,10 @@ class App extends Component {
       .then(response => response.json())
       .then(users => this.setState({monsters:users}))
   }
+  componentDidUpdate() {
+    console.log("componentDidUpdate!");
+}
+
   //leverage es6 arreow functions. it allows to set the context of this to the app component
   handleChange = (e) => {
     this.setState({searchField: e.target.value})
@@ -55,7 +60,7 @@ class App extends Component {
                 handleChange={this.handleChange}
               />
               <CardListComponent monsters={filteredMonsters} />
-
+              <Async increment={1} />
           </div>
       )
   }
